@@ -6,9 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -21,28 +19,20 @@
       overflow: hidden;
     }
 
-    /* floating hearts */
     .heart {
       position: absolute;
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 20px;
+      color: rgba(255,255,255,0.6);
       animation: float 6s linear infinite;
     }
 
     @keyframes float {
-      from {
-        transform: translateY(100vh) scale(1);
-        opacity: 1;
-      }
-      to {
-        transform: translateY(-10vh) scale(1.5);
-        opacity: 0;
-      }
+      from { transform: translateY(100vh); opacity: 1; }
+      to { transform: translateY(-10vh); opacity: 0; }
     }
 
     .card {
       background: white;
-      padding: 35px 30px 40px;
+      padding: 36px 30px 40px;
       border-radius: 22px;
       text-align: center;
       width: 320px;
@@ -52,14 +42,8 @@
     }
 
     @keyframes pop {
-      from {
-        transform: scale(0.8);
-        opacity: 0;
-      }
-      to {
-        transform: scale(1);
-        opacity: 1;
-      }
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
 
     h1 {
@@ -86,7 +70,6 @@
       border-radius: 25px;
       cursor: pointer;
       position: absolute;
-      transition: transform 0.2s ease;
     }
 
     #yes {
@@ -95,10 +78,6 @@
       left: 50%;
       transform: translateX(-50%);
       box-shadow: 0 6px 15px rgba(255,77,109,0.5);
-    }
-
-    #yes:hover {
-      transform: translateX(-50%) scale(1.08);
     }
 
     #no {
@@ -111,22 +90,27 @@
 </head>
 <body>
 
-  <!-- floating hearts -->
+  <!-- Romantic Music -->
+  <audio id="bgMusic" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Floating hearts -->
   <script>
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 22; i++) {
       const heart = document.createElement("div");
       heart.className = "heart";
       heart.innerHTML = "❤";
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.animationDelay = Math.random() * 6 + "s";
-      heart.style.fontSize = 14 + Math.random() * 20 + "px";
+      heart.style.fontSize = 14 + Math.random() * 22 + "px";
       document.body.appendChild(heart);
     }
   </script>
 
   <div class="card">
-    <h1>Will you be my Valentine? 💖</h1>
-    <p>I promise smiles, laughs, and endless care ✨</p>
+    <h1>Will you be my Valentine, Shikha? 💖</h1>
+    <p>Every smile of yours feels like home ✨</p>
 
     <div class="buttons">
       <button id="yes">Yes 💕</button>
@@ -136,15 +120,16 @@
 
   <script>
     const noBtn = document.getElementById("no");
+    const music = document.getElementById("bgMusic");
 
     noBtn.addEventListener("mouseover", () => {
-      const x = Math.random() * 220;
-      const y = Math.random() * 60;
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
+      noBtn.style.left = Math.random() * 220 + "px";
+      noBtn.style.top = Math.random() * 60 + "px";
     });
 
     document.getElementById("yes").addEventListener("click", () => {
+      music.play();
+
       document.body.innerHTML = `
         <div style="
           height:100vh;
@@ -154,11 +139,10 @@
           background: radial-gradient(circle, #ffe1ea, #ff8fa3);
           font-family: Segoe UI;
           text-align:center;
-          animation: pop 0.6s ease;
         ">
           <h1 style="color:#ff3b6f; font-size:26px;">
-            Yayyy! 💘<br><br>
-            I knew you'd say yes 😌
+            Yayyy Shikha! 💘<br><br>
+            This just became my favorite moment ❤️
           </h1>
         </div>
       `;
